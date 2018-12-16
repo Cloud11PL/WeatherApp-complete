@@ -1,6 +1,6 @@
 package sample;
 
-import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,6 +8,9 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 import org.controlsfx.control.textfield.TextFields;
 
 public class Controller {
@@ -22,10 +26,8 @@ public class Controller {
     private DatabaseConnection dbconn = new DatabaseConnection();
     private WeatherConnection weatherConnection = new WeatherConnection();
     private ArrayList possibleWordSet = new ArrayList();
-    /*
-    CollectionName musi sie tworzyc dla nowego pomiaru!!!!!
-     */
-    private final String initialCollectionName = getCollectionName();
+
+    private String collectionName = getCollectionName();
     private String getCollectionName(){
         LocalDateTime date = LocalDateTime.now();
         String collectionName = "date_" + date.getYear() + date.getMonth().getValue() + date.getDayOfMonth() + "_" + date.getHour() + date.getMinute() + date.getSecond();
@@ -58,6 +60,9 @@ public class Controller {
 
     @FXML
     private LineChart<String, Double> chart;
+
+    @FXML
+    private Button newDoc;
 
     @FXML
     private Label curTemp;
@@ -93,11 +98,10 @@ public class Controller {
         assert maxTempInTime != null : "fx:id=\"maxTempInTime\" was not injected: check your FXML file 'sample.fxml'.";
         playPauseBttn.setDisable(true);
         stopBttn.setDisable(true);
+        newDoc.setDisable(true);
         listenKey();
-
-        UIData displayCurrent = new UIData(curTemp,curHum,curPress,chart,measurements,stDev,minTempInTime,maxTempInTime,initialCollectionName);
-        weatherConnection.addObserver(displayCurrent);
     }
+
 
     @FXML
     void add(ActionEvent event) {
@@ -111,28 +115,35 @@ public class Controller {
             playPause.setCache(true);
             playPause.setFitHeight(50);
             playPause.setFitWidth(41);
-            weatherConnection.stop();
+            weatherConnection.interrupt();
+            System.out.println("WeatherConnection interrupted");
             stopBttn.setDisable(false);
         } else {
             playPause.setImage(new Image(getClass().getResourceAsStream("assets/img/pause.png")));
             playPause.setCache(true);
             playPause.setFitHeight(50);
             playPause.setFitWidth(41);
-            weatherConnection.start();
+            weatherConnection.resume();
+            System.out.println("WeatherConnection started");
         }
     }
 
     @FXML
     void stop(ActionEvent event) {
         weatherConnection.stop();
-        UIData observersToRemove = new UIData(curTemp,curHum,curPress,chart,measurements,stDev,minTempInTime,maxTempInTime,initialCollectionName);
+        UIData observersToRemove = new UIData(curTemp,curHum,curPress,chart,measurements,stDev,minTempInTime,maxTempInTime,collectionName);
         weatherConnection.removeObserver(observersToRemove);
-        searchField.setDisable(false);
+        observersToRemove.clearData();
         playPauseBttn.setDisable(true);
         System.out.println("Process has been stopped.");
         stopBttn.setDisable(true);
+        newDoc.setDisable(false);
     }
 
+    private void addObservers(){
+        UIData displayCurrent = new UIData(curTemp,curHum,curPress,chart,measurements,stDev,minTempInTime,maxTempInTime,collectionName);
+        weatherConnection.addObserver(displayCurrent);
+    }
 
 
     public void listenKey(){
@@ -143,7 +154,9 @@ public class Controller {
                 System.out.println(possibleWordSet);
                 TextFields.bindAutoCompletion(searchField,possibleWordSet).setOnAutoCompleted(event -> {
                             System.out.println(searchField.getText());
-                            weatherConnection.getWeatherByID(dbconn.getSelectedCityID(possibleWordSet.lastIndexOf(searchField.getText())),initialCollectionName,searchField.getText());
+                            weatherConnection.killObservers();
+                            addObservers();
+                            weatherConnection.getWeatherByID(dbconn.getSelectedCityID(possibleWordSet.lastIndexOf(searchField.getText())),collectionName,searchField.getText());
                             weatherConnection.start();
                             playPauseBttn.setDisable(false);
                             playPause.setImage(new Image(getClass().getResourceAsStream("assets/img/pause.png")));
@@ -153,5 +166,29 @@ public class Controller {
                 });
             }
         });
+    }
+
+    @FXML
+    void newMeasurementInit(ActionEvent event) {
+        LocalDateTime date = LocalDateTime.now();
+        this.collectionName = "date_" + date.getYear() + date.getMonth().getValue() + date.getDayOfMonth() + "_" + date.getHour() + date.getMinute() + date.getSecond();
+        System.out.println(collectionName);
+        searchField.setDisable(false);
+        newDoc.setDisable(true);
+    }
+
+    @FXML
+    void addWindow(ActionEvent event) {
+        try {
+            Parent root2;
+            root2 = FXMLLoader.load(getClass().getClassLoader().getResource("measurement.fxml"));
+            Stage stage2 = new Stage();
+            stage2.setTitle("Chose the measurement");
+            stage2.setScene(new Scene(root2, 450, 450));
+            stage2.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

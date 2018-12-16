@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-public class UIData implements Observer{
+public class UIData implements Observer {
+    DatabaseConnection databaseConnection = new DatabaseConnection();
+    UICalculations uiCalculations = new UICalculations();
     private Label curTemp;
     private Label curHum;
     private Label curPress;
@@ -21,11 +23,7 @@ public class UIData implements Observer{
     private Label minTempInTime;
     private Label maxTempInTime;
 
-
-    DatabaseConnection databaseConnection = new DatabaseConnection();
-    UICalculations uiCalculations = new UICalculations();
-
-    public UIData(Label curTemp, Label curHum, Label curPress, LineChart chart,Label measurements,Label stDev, Label minTempInTime, Label maxTempInTime, String collectionName) {
+    public UIData(Label curTemp, Label curHum, Label curPress, LineChart chart, Label measurements, Label stDev, Label minTempInTime, Label maxTempInTime, String collectionName) {
         this.curTemp = curTemp;
         this.curHum = curHum;
         this.curPress = curPress;
@@ -46,11 +44,11 @@ public class UIData implements Observer{
         XYChart.Series series = new XYChart.Series();
         series.setName("Temperature in time");
 
-        for(int i = 0; i < OXData.size(); i++){
+        for (int i = 0; i < OXData.size(); i++) {
             series.getData().add(new XYChart.Data(OXData.get(i), OYData.get(i)));
         }
 
-        Platform.runLater(()-> {
+        Platform.runLater(() -> {
             curHum.setText(cursor.get("humidity").toString());
             curTemp.setText(cursor.get("temp").toString());
             curPress.setText(cursor.get("pressure").toString());
@@ -62,5 +60,18 @@ public class UIData implements Observer{
             chart.getData().add(series);
         });
 
+    }
+
+    public void clearData() {
+        Platform.runLater(() -> {
+            curHum.setText("");
+            curTemp.setText("");
+            curPress.setText("");
+            stDev.setText("");
+            measurements.setText("");
+            minTempInTime.setText("");
+            maxTempInTime.setText("");
+            chart.getData().clear();
+        });
     }
 }

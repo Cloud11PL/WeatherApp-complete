@@ -19,7 +19,7 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="60.0" style="-fx-background-color: #000000;">
          <children>
-            <Button fx:id="addBttn" mnemonicParsing="false" onAction="#add" prefHeight="45.0" prefWidth="60.0" stylesheets="@assets/styles/bttnStyles.css">
+            <Button fx:id="addBttn" mnemonicParsing="false" onAction="#addWindow" prefHeight="45.0" prefWidth="60.0" stylesheets="@assets/styles/bttnStyles.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -57,6 +57,18 @@
                   <ImageView fitHeight="50.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/img/stop.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="newDoc" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" onAction="#newMeasurementInit" prefHeight="45.0" prefWidth="60.0" stylesheets="@assets/styles/bttnStyles.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/img/new.png" />
                      </image>
                   </ImageView>
                </graphic>
