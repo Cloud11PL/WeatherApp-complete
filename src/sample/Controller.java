@@ -17,7 +17,10 @@ public class Controller {
     private WeatherConnection weatherConnection = new WeatherConnection();
     private ArrayList possibleWordSet = new ArrayList();
     private LocalDateTime date = LocalDateTime.now();
-    private String collectionName = "date_" + date.getYear() + date.getMonth() + date.getDayOfMonth() + "_" + date.getHour() + date.getMinute() + date.getSecond();
+    /*
+    CollectionName musi sie tworzyc dla nowego pomiaru!!!!!
+     */
+    private String collectionName = "date_" + date.getYear() + date.getMonth().getValue() + date.getDayOfMonth() + "_" + date.getHour() + date.getMinute() + date.getSecond();
 
     @FXML
     private ResourceBundle resources;
@@ -29,7 +32,7 @@ public class Controller {
     private TextField searchField;
 
     @FXML
-    private LineChart<?, ?> chart;
+    private LineChart<String, Double> chart;
 
     @FXML
     private Label curTemp;
@@ -64,7 +67,7 @@ public class Controller {
         assert maxTempInTime != null : "fx:id=\"maxTempInTime\" was not injected: check your FXML file 'sample.fxml'.";
         listenKey();
 
-        UIData displayCurrent = new UIData(curHum,curTemp,curPress);
+        UIData displayCurrent = new UIData(curTemp,curHum,curPress,chart,collectionName);
         weatherConnection.addObserver(displayCurrent);
     }
 
@@ -76,7 +79,7 @@ public class Controller {
                 System.out.println(possibleWordSet);
                 TextFields.bindAutoCompletion(searchField,possibleWordSet).setOnAutoCompleted(event -> {
                             System.out.println(searchField.getText());
-                            weatherConnection.getWeatherByID(dbconn.getSelectedCityID(possibleWordSet.lastIndexOf(searchField.getText())),collectionName);
+                            weatherConnection.getWeatherByID(dbconn.getSelectedCityID(possibleWordSet.lastIndexOf(searchField.getText())),collectionName,searchField.getText());
                             weatherConnection.start();
                         });
             }

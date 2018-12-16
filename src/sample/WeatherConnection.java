@@ -22,16 +22,17 @@ public class WeatherConnection implements Observable, Runnable {
     protected volatile boolean isRunning = false;  //volatile - zmiana od razu zostanie zapisana w pamieci glownej i chache zostaje uaktualniony //protected - dostep maja takze klasy dziedzieczace
     private int interval;
     private String timeStamp;
+    private String city;
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public WeatherConnection() {
-        interval = 1000;
+        interval = 90000;
     }
 
-    public void getWeatherByID(int ID, String collectionName){
+    public void getWeatherByID(int ID, String collectionName, String city){
         this.ID = ID;
         this.collectionName = collectionName;
-        getWeather();
+        this.city = city;
     }
 
     void getWeather(){
@@ -73,17 +74,17 @@ public class WeatherConnection implements Observable, Runnable {
 
         JsonElement DBProp = gson.toJsonTree(main);
         DBProp.getAsJsonObject().addProperty("time",timeStamp);
-
+        DBProp.getAsJsonObject().addProperty("city",city);
+/*
         System.out.println(DBProp);
         System.out.println(e3);
-        System.out.println(timeStamp);
-
+        System.out.println(timeStamp);*/
+        databaseConnection.addToDatabase(collectionName,DBProp);
     }
 
     public void start() {
         worker = new Thread(this, "Clock thread");
         worker.start();
-
     }
 
     @Override
@@ -96,11 +97,15 @@ public class WeatherConnection implements Observable, Runnable {
         if (observers.contains(observer)) observers.remove(observer);
     }
 
+    public void stop() {
+        isRunning = false;
+    }
+
     @Override
     public void updateObservers() {
         for (Observer o : observers) {
             getWeather();
-            o.update(timeStamp);
+            o.update();
         }
     }
 
@@ -108,11 +113,9 @@ public class WeatherConnection implements Observable, Runnable {
     public void run() {
         isRunning = true;
         while (isRunning) {
-
             try {
-                System.out.println(LocalTime.now());
-                Thread.sleep(interval);
                 updateObservers();
+                Thread.sleep(interval);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.out.println("Failed to complete operation");

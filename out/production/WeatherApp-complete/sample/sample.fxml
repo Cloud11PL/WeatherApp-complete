@@ -29,7 +29,7 @@
             </Pane>
             <HBox prefHeight="459.0" prefWidth="743.0">
                <children>
-                  <LineChart fx:id="chart" stylesheets="@../../assets/styles/chartStyle.css">
+                  <LineChart fx:id="chart" axisSortingPolicy="NONE" stylesheets="@assets/styles/chartStyle.css">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
