@@ -50,12 +50,6 @@ public class UIData implements Observer{
             series.getData().add(new XYChart.Data(OXData.get(i), OYData.get(i)));
         }
 
-        /*
-        Platform.runLater(()-> curHum.setText(cursor.get("humidity").toString()));
-        Platform.runLater(()-> curTemp.setText(cursor.get("temp").toString()));
-        Platform.runLater(()-> curPress.setText(cursor.get("pressure").toString()));
-        */
-
         Platform.runLater(()-> {
             curHum.setText(cursor.get("humidity").toString());
             curTemp.setText(cursor.get("temp").toString());

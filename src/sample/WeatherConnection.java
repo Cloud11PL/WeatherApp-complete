@@ -1,8 +1,6 @@
 package sample;
 
 import com.google.gson.*;
-import com.mongodb.DB;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,7 +24,7 @@ public class WeatherConnection implements Observable, Runnable {
     DatabaseConnection databaseConnection = new DatabaseConnection();
 
     public WeatherConnection() {
-        interval = 90000;
+        interval = 5000;
     }
 
     public void getWeatherByID(int ID, String collectionName, String city){
@@ -75,10 +73,6 @@ public class WeatherConnection implements Observable, Runnable {
         JsonElement DBProp = gson.toJsonTree(main);
         DBProp.getAsJsonObject().addProperty("time",timeStamp);
         DBProp.getAsJsonObject().addProperty("city",city);
-/*
-        System.out.println(DBProp);
-        System.out.println(e3);
-        System.out.println(timeStamp);*/
         databaseConnection.addToDatabase(collectionName,DBProp);
     }
 
@@ -107,6 +101,12 @@ public class WeatherConnection implements Observable, Runnable {
             getWeather();
             o.update();
         }
+    }
+
+
+    public void interrupt() {
+        isRunning = false;
+        worker.interrupt();
     }
 
     @Override
