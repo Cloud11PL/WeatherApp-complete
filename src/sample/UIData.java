@@ -62,6 +62,32 @@ public class UIData implements Observer {
 
     }
 
+    public void displayDataFromDB() {
+        Document cursor = databaseConnection.getLatestDataFromDB(collectionName);
+        ArrayList<String> OXData = databaseConnection.getOXData(collectionName);
+        ArrayList<Double> OYData = databaseConnection.getOYData(collectionName);
+
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Temperature in time");
+
+        for (int i = 0; i < OXData.size(); i++) {
+            series.getData().add(new XYChart.Data(OXData.get(i), OYData.get(i)));
+        }
+
+        Platform.runLater(() -> {
+            curHum.setText(cursor.get("humidity").toString());
+            curTemp.setText(cursor.get("temp").toString());
+            curPress.setText(cursor.get("pressure").toString());
+            stDev.setText(Double.toString(uiCalculations.getStDeviation(OYData)));
+            measurements.setText(Integer.toString(databaseConnection.getCollectionSize(collectionName)));
+            minTempInTime.setText(Double.toString(Collections.min((Collection<? extends Double>) OYData)));
+            maxTempInTime.setText(Double.toString(Collections.max((Collection<? extends Double>) OYData)));
+            chart.getData().clear();
+            chart.getData().add(series);
+        });
+
+    }
+
     public void clearData() {
         Platform.runLater(() -> {
             curHum.setText("");

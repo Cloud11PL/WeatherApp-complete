@@ -3,6 +3,7 @@ package sample;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
@@ -14,7 +15,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
-public class Measurement {
+public class Measurement{
+
+    private String select;
 
     @FXML
     private ResourceBundle resources;
@@ -30,7 +33,21 @@ public class Measurement {
 
     @FXML
     void useCollection(ActionEvent event) {
+        String selection = collectionComboBox.getSelectionModel().getSelectedItem();
+        System.out.println(selection);
+        select = selection;
+        customerSelectCallback.accept(selection);
 
+    }
+
+    private Consumer<String> customerSelectCallback ;
+
+    public void setCustomerSelectCallback(Consumer<String> callback) {
+        this.customerSelectCallback = callback ;
+    }
+
+    public String getSelect() {
+        return select;
     }
 
     @FXML
