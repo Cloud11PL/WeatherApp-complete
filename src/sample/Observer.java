@@ -1,7 +1,5 @@
 package sample;
 
-import java.time.LocalTime;
-
 public interface Observer {
-    void updateTime(LocalTime time);
+    void update(String timeStamp);
 }

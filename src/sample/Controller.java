@@ -11,11 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import org.controlsfx.control.textfield.TextFields;
 
-import static org.controlsfx.control.textfield.TextFields.*;
-
 public class Controller {
 
-    private databaseConnection dbconn = new databaseConnection();
+    private DatabaseConnection dbconn = new DatabaseConnection();
     private WeatherConnection weatherConnection = new WeatherConnection();
     private ArrayList possibleWordSet = new ArrayList();
     private LocalDateTime date = LocalDateTime.now();
@@ -65,6 +63,9 @@ public class Controller {
         assert minTempInTime != null : "fx:id=\"minTempInTime\" was not injected: check your FXML file 'sample.fxml'.";
         assert maxTempInTime != null : "fx:id=\"maxTempInTime\" was not injected: check your FXML file 'sample.fxml'.";
         listenKey();
+
+        UIData displayCurrent = new UIData(curHum,curTemp,curPress);
+        weatherConnection.addObserver(displayCurrent);
     }
 
     public void listenKey(){
