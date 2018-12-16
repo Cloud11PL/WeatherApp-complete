@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="60.0" style="-fx-background-color: #000000;" />
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="746.0" style="-fx-background-color: #211E21;">
+         <children>
+            <Pane prefHeight="144.0" prefWidth="743.0">
+               <children>
+                  <Text fill="WHITE" layoutX="25.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weather Graph" wrappingWidth="338.9830722808838">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="searchField" layoutX="498.0" layoutY="97.0" prefHeight="26.0" prefWidth="232.0" />
+               </children>
+            </Pane>
+            <HBox prefHeight="459.0" prefWidth="743.0">
+               <children>
+                  <LineChart fx:id="chart" stylesheets="@../../assets/styles/chartStyle.css">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <VBox prefHeight="304.0" prefWidth="245.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Data" wrappingWidth="145.9830722808838">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="22.0" />
+                           </VBox.margin>
+                        </Text>
+                        <HBox prefHeight="30.0" prefWidth="245.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature " wrappingWidth="120.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Label fx:id="curTemp" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="40.0" text="32" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="70.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="44.0" prefHeight="30.0" prefWidth="245.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Humidity" wrappingWidth="120.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Label fx:id="curHum" alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="40.0" text="32" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="70.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="80.0" prefHeight="30.0" prefWidth="245.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pressure" wrappingWidth="120.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Label fx:id="curPress" alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="40.0" text="32" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="70.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Text fill="WHITE" layoutX="10.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calculated Data" wrappingWidth="185.9830722808838">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Text>
+                        <HBox prefHeight="30.0" prefWidth="245.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Measurements" wrappingWidth="125.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Label fx:id="measurements" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="40.0" text="32" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="65.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="30.0" prefWidth="245.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="St. deviation" wrappingWidth="120.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Label fx:id="stDev" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="40.0" text="32" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="70.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="244.0" prefHeight="30.0" prefWidth="245.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Min. Temp" wrappingWidth="120.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Label fx:id="minTempInTime" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="40.0" text="32" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="70.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="282.0" prefHeight="30.0" prefWidth="245.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Max. Temp" wrappingWidth="120.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Label fx:id="maxTempInTime" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="40.0" text="32" textAlignment="RIGHT" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="70.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>
