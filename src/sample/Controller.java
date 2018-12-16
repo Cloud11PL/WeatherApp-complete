@@ -67,7 +67,7 @@ public class Controller {
         assert maxTempInTime != null : "fx:id=\"maxTempInTime\" was not injected: check your FXML file 'sample.fxml'.";
         listenKey();
 
-        UIData displayCurrent = new UIData(curTemp,curHum,curPress,chart,collectionName);
+        UIData displayCurrent = new UIData(curTemp,curHum,curPress,chart,measurements,stDev,minTempInTime,maxTempInTime,collectionName);
         weatherConnection.addObserver(displayCurrent);
     }
 

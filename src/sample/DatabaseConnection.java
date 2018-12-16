@@ -79,6 +79,13 @@ public class DatabaseConnection {
         return OYData;
     }
 
+    public int getCollectionSize(String collectionName){
+        MongoClient client = new MongoClient();
+        MongoDatabase database = client.getDatabase("weatherApp");
+        MongoCollection collection = database.getCollection(collectionName);
+        return (int) collection.countDocuments();
+    }
+
 
 
 }

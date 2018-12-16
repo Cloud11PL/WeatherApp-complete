@@ -1,14 +1,14 @@
 package sample;
 
 import javafx.application.Platform;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class UIData implements Observer{
     private Label curTemp;
@@ -16,15 +16,25 @@ public class UIData implements Observer{
     private Label curPress;
     private String collectionName;
     private LineChart chart;
+    private Label measurements;
+    private Label stDev;
+    private Label minTempInTime;
+    private Label maxTempInTime;
+
 
     DatabaseConnection databaseConnection = new DatabaseConnection();
+    UICalculations uiCalculations = new UICalculations();
 
-    public UIData(Label curTemp, Label curHum, Label curPress, LineChart chart, String collectionName) {
+    public UIData(Label curTemp, Label curHum, Label curPress, LineChart chart,Label measurements,Label stDev, Label minTempInTime, Label maxTempInTime, String collectionName) {
         this.curTemp = curTemp;
         this.curHum = curHum;
         this.curPress = curPress;
         this.collectionName = collectionName;
         this.chart = chart;
+        this.measurements = measurements;
+        this.stDev = stDev;
+        this.minTempInTime = minTempInTime;
+        this.maxTempInTime = maxTempInTime;
     }
 
     @Override
@@ -50,6 +60,10 @@ public class UIData implements Observer{
             curHum.setText(cursor.get("humidity").toString());
             curTemp.setText(cursor.get("temp").toString());
             curPress.setText(cursor.get("pressure").toString());
+            stDev.setText(Double.toString(uiCalculations.getStDeviation(OYData)));
+            measurements.setText(Integer.toString(databaseConnection.getCollectionSize(collectionName)));
+            minTempInTime.setText(Double.toString(Collections.min((Collection<? extends Double>) OYData)));
+            maxTempInTime.setText(Double.toString(Collections.max((Collection<? extends Double>) OYData)));
             chart.getData().clear();
             chart.getData().add(series);
         });
