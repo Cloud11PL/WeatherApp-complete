@@ -39,7 +39,7 @@
                   <Insets />
                </opaqueInsets>
                <graphic>
-                  <ImageView fx:id="playPause" fitHeight="50.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="playPause" fitHeight="54.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/img/play.png" />
                      </image>
@@ -60,6 +60,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
             </Button>
             <Button fx:id="newDoc" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" onAction="#newMeasurementInit" prefHeight="45.0" prefWidth="60.0" stylesheets="@assets/styles/bttnStyles.css">
                <opaqueInsets>
@@ -69,6 +72,18 @@
                   <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assets/img/new.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="getJsonBttn" layoutX="10.0" layoutY="175.0" mnemonicParsing="false" onAction="#downloadJson" prefHeight="45.0" prefWidth="60.0" stylesheets="@assets/styles/bttnStyles.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/img/get.png" />
                      </image>
                   </ImageView>
                </graphic>

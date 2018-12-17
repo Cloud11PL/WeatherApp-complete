@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Measurement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Measurement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DatabaseConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/UIData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/UIData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,12 +88,12 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="fxml" value="5" />
-          <entry key="java" value="5295" />
+          <entry key="java" value="5692" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5295" />
+          <entry key="JAVA" value="5692" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="5" />
         </counts>
@@ -117,24 +117,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="231" column="6" lean-forward="true" selection-start-line="231" selection-start-column="6" selection-end-line="231" selection-end-column="6" />
+            <state relative-caret-position="217">
+              <caret line="232" column="47" lean-forward="true" selection-start-line="232" selection-start-column="47" selection-end-line="232" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7910#7911#0" expanded="true" />
-                <element signature="e#7939#7940#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/DatabaseConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="94" column="5" lean-forward="true" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Measurement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="299">
               <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -160,8 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/UIData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+            <state relative-caret-position="190">
+              <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,8 +183,8 @@
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1955">
-              <caret line="17" column="205" selection-start-line="17" selection-start-column="205" selection-end-line="17" selection-end-column="238" />
+            <state relative-caret-position="180">
+              <caret line="78" column="106" selection-start-line="78" selection-start-column="106" selection-end-line="78" selection-end-column="106" />
             </state>
           </provider>
         </entry>
@@ -182,24 +192,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/WeatherConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1768">
-              <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+            <state relative-caret-position="255">
+              <caret line="62" selection-start-line="62" selection-end-line="75" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3302#3303#0" expanded="true" />
                 <element signature="e#3335#3336#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/DatabaseConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -257,16 +255,16 @@
       <list>
         <option value="$PROJECT_DIR$/src/sample/databaseConnection.java" />
         <option value="$PROJECT_DIR$/src/sample/Observer.java" />
-        <option value="$PROJECT_DIR$/src/sample/DatabaseConnection.java" />
         <option value="$PROJECT_DIR$/src/sample/UICalculations.java" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/measurement.fxml" />
         <option value="$PROJECT_DIR$/src/sample/resources/measurement.fxml" />
         <option value="$PROJECT_DIR$/src/sample/WeatherConnection.java" />
+        <option value="$PROJECT_DIR$/src/sample/Measurement.java" />
         <option value="$PROJECT_DIR$/src/sample/UIData.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
-        <option value="$PROJECT_DIR$/src/sample/Measurement.java" />
+        <option value="$PROJECT_DIR$/src/sample/DatabaseConnection.java" />
       </list>
     </option>
   </component>
@@ -467,7 +465,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545002087706" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545005021070" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="F:/Pobierane/gson-2.8.5.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -581,12 +579,12 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1544917983444" duration="8652000" />
       <workItem from="1544928563519" duration="4995000" />
-      <workItem from="1544968758702" duration="26505000" />
+      <workItem from="1544968758702" duration="29544000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41454000" />
+    <option name="totallyTimeSpent" value="44493000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -699,14 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1955">
-          <caret line="17" column="205" selection-start-line="17" selection-start-column="205" selection-end-line="17" selection-end-column="238" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/resources/measurement.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -722,10 +712,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/UIData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Measurement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/WeatherConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+        <state relative-caret-position="255">
+          <caret line="62" selection-start-line="62" selection-end-line="75" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3302#3303#0" expanded="true" />
@@ -734,20 +748,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/DatabaseConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="78" column="106" selection-start-line="78" selection-start-column="106" selection-end-line="78" selection-end-column="106" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/UIData.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="78" column="41" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
+        <state relative-caret-position="384">
+          <caret line="94" column="5" lean-forward="true" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -766,26 +778,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="231" column="6" lean-forward="true" selection-start-line="231" selection-start-column="6" selection-end-line="231" selection-end-column="6" />
+        <state relative-caret-position="217">
+          <caret line="232" column="47" lean-forward="true" selection-start-line="232" selection-start-column="47" selection-end-line="232" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7910#7911#0" expanded="true" />
-            <element signature="e#7939#7940#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Measurement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -79,11 +79,19 @@ public class DatabaseConnection {
         return OYData;
     }
 
-    public int getCollectionSize(String collectionName){
+    public MongoCollection getCollectionSize(String collectionName){
         MongoClient client = new MongoClient();
         MongoDatabase database = client.getDatabase("weatherApp");
         MongoCollection collection = database.getCollection(collectionName);
-        return (int) collection.countDocuments();
+        return collection;
+    }
+
+    public FindIterable<Document> getCollection(String collectionName){
+        MongoClient client = new MongoClient();
+        MongoDatabase database = client.getDatabase("weatherApp");
+        MongoCollection collection = database.getCollection(collectionName);
+        FindIterable<Document> cursor = collection.find();
+        return cursor;
     }
 
 
