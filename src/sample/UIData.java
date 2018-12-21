@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+
+/**
+ * Class containing methods responsible for displaying data in the UI.
+ */
 public class UIData implements Observer {
     DatabaseConnection databaseConnection = new DatabaseConnection();
     UICalculations uiCalculations = new UICalculations();
@@ -35,6 +39,9 @@ public class UIData implements Observer {
         this.maxTempInTime = maxTempInTime;
     }
 
+    /**
+     * Method a method of the Observer interface. It utilizes Platform.runLater to display data in the UI.
+     */
     @Override
     public void update() {
         Document cursor = databaseConnection.getLatestDataFromDB(collectionName);
@@ -62,6 +69,9 @@ public class UIData implements Observer {
 
     }
 
+    /**
+     * Method clears all data in the UI.
+     */
     public void clearData() {
         Platform.runLater(() -> {
             curHum.setText("");

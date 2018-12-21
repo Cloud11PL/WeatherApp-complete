@@ -34,6 +34,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
+/**
+ * Main JavaFX class
+ */
 public class Controller {
 
     private DatabaseConnection dbconn = new DatabaseConnection();
@@ -77,12 +80,22 @@ public class Controller {
     @FXML
     private Button getJsonBttn;
 
+    /**
+     * Function returns the collection name for the database. It consists of current date and time.
+     * @return
+     */
     private String getCollectionName() {
         LocalDateTime date = LocalDateTime.now();
         String collectionName = "date_" + date.getYear() + date.getMonth().getValue() + date.getDayOfMonth() + "_" + date.getHour() + date.getMinute() + date.getSecond();
         return collectionName;
     }
 
+    /**
+     * Method retrieves a collection with current data from the database using the current collectionName.
+     * Each Document gets the '_id' parameter removed as it is automatically assigned by the Mongo Database and it doesn't add add anything significant for the user.
+     * Then it parses it to .json file to be finally saved using JFileChooser (it works only on Windows).
+     * @param event - trigger button
+     */
     @FXML
     void downloadJson(ActionEvent event) {
         FindIterable<Document> dataForJson = dbconn.getCollection(collectionName);
@@ -124,7 +137,11 @@ public class Controller {
         listenKey();
     }
 
-
+    /**
+     * The function can be triggered by the user after the measurement starts. It pauses or resumes the Thread according to its actual status.
+     * On top of that, playPause change some UI elements.
+     * @param event
+     */
     @FXML
     void playPause(ActionEvent event) {
         if (weatherConnection.isRunning) {
@@ -145,6 +162,11 @@ public class Controller {
         }
     }
 
+    /**
+     * The stop method stops the Thread and changes some UI elements.
+     * @param event
+     */
+
     @FXML
     void stop(ActionEvent event) {
         weatherConnection.stop();
@@ -156,13 +178,26 @@ public class Controller {
         stopBttn.setDisable(true);
         newDoc.setDisable(false);
         getJsonBttn.setDisable(false);
+        addBttn.setDisable(false);
     }
 
+    /**
+     * addObservers creates a new UIData instance that has parameters of UI elements and the current collectionName.
+     * The method adds the instance as a observer.
+     */
     private void addObservers() {
         UIData displayCurrent = new UIData(curTemp, curHum, curPress, chart, measurements, stDev, minTempInTime, maxTempInTime, collectionName);
         weatherConnection.addObserver(displayCurrent);
     }
 
+    /**
+     * This method is responsible for showing the user possible name of the cities based on user's input.
+     * As user types, user's input becomes a parameter for a function that fetches the database in search of cities that match the query.
+     * The response is an array that is a set of possible cities that user can choose.
+     *
+     * On completion, ThextFields fires functions that fetch the weather, start the worker and make some changes to the UI.
+     * For the sake of multiple measurements in one app launch without the need to reload the application, the method also calls a method that deletes all observers.
+     */
 
     public void listenKey() {
         searchField.setOnKeyPressed(ke -> {
@@ -181,11 +216,16 @@ public class Controller {
                     playPause.setFitHeight(50);
                     playPause.setFitWidth(41);
                     searchField.setDisable(true);
+                    addBttn.setDisable(true);
                 });
             }
         });
     }
 
+    /**
+     * Method allows user to make a new measurement by creating a new collectionName and assigning it to the variable.
+     * @param event
+     */
     @FXML
     void newMeasurementInit(ActionEvent event) {
         LocalDateTime date = LocalDateTime.now();
@@ -195,6 +235,10 @@ public class Controller {
         newDoc.setDisable(true);
     }
 
+    /**
+     * displayImportedData allows user to display data from previous measurements fetched from the database.
+     * @param selectedData
+     */
     void displayImportedData(String selectedData) {
         UICalculations uiCalculations = new UICalculations();
         Document cursor = dbconn.getLatestDataFromDB(selectedData);
@@ -219,8 +263,15 @@ public class Controller {
         chart.getData().add(series);
 
         getJsonBttn.setDisable(false);
+        stopBttn.setDisable(false);
     }
 
+    /**
+     * Method addWindow creates a new window so that the user can choose a collection to fetch measurement data from.
+     * Method utilizes 'Customer' https://docs.oracle.com/javase/9/docs/api/java/util/function/Consumer.html
+     * Customer is used to get user's selection from the Measurement controller to the main Controller.
+     * @param event
+     */
     @FXML
     void addWindow(ActionEvent event) {
         try {
@@ -238,6 +289,7 @@ public class Controller {
             stage2.setTitle("Chose the measurement");
             stage2.setScene(new Scene(root2, 450, 450));
             stage2.show();
+            addBttn.setDisable(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

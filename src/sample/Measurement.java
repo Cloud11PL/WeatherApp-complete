@@ -15,6 +15,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
+/**
+ * Controller for an additional window.
+ */
 public class Measurement{
 
     private String select;
@@ -31,13 +34,16 @@ public class Measurement{
     @FXML
     private Button useCollBttn;
 
+    /**
+     * Method is used to display all collection names in a current database.
+     * @param event
+     */
     @FXML
     void useCollection(ActionEvent event) {
         String selection = collectionComboBox.getSelectionModel().getSelectedItem();
         System.out.println(selection);
         select = selection;
         customerSelectCallback.accept(selection);
-
     }
 
     private Consumer<String> customerSelectCallback ;
@@ -50,6 +56,9 @@ public class Measurement{
         return select;
     }
 
+    /**
+     * Initialize fetches the database to get all available collections and adds them to a ObservableList.
+     */
     @FXML
     void initialize() {
         assert collectionComboBox != null : "fx:id=\"collectionComboBox\" was not injected: check your FXML file 'measurement.fxml'.";
