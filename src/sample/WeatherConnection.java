@@ -11,6 +11,9 @@ import java.net.URL;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ * Separate thread class responsible for API calls and Observers manipulation.
+ */
 public class WeatherConnection implements Observable, Runnable {
 
     protected volatile boolean isRunning = false;  //volatile - zmiana od razu zostanie zapisana w pamieci glownej i chache zostaje uaktualniony //protected - dostep maja takze klasy dziedzieczace
@@ -33,6 +36,11 @@ public class WeatherConnection implements Observable, Runnable {
         this.city = city;
     }
 
+    /**
+     * getWeather is the main responsible for API calls. It manipulates the output to get the 'main' parameter from the JSON.
+     * Next, it creates a variable that consists of current time that will be set as the OX data.
+     * The JSON is manipulated, both city names and 'time' are added as parameters to be finally passed to a method that adds the JSON to the database.
+     */
     void getWeather() {
         StringBuffer response = new StringBuffer();
         String id = "18ee68ce9ff2ad02a13567268869a245";

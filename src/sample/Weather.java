@@ -1,5 +1,9 @@
 package sample;
 
+
+/**
+ * Class with parameters designed for creating an object for current weather.
+ */
 public class Weather {
     private double temp;
     private double pressure;

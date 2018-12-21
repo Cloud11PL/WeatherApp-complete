@@ -1,9 +1,16 @@
 package sample;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
+/**
+ * Class containing methods for calculating parameters of the data.
+ */
 public class UICalculations {
+    /**
+     * Method calculates the standard deviation based on Y Axis data
+     * @param oyData ArrayList that consists of Y Axis data - temperature
+     * @return Standard Deviation
+     */
     public double getStDeviation(ArrayList<Double> oyData){
 
         double sum = 0;
@@ -21,9 +28,5 @@ public class UICalculations {
         }
         double meanOfDiffs = temp / (double) (oyData.size());
         return Math.sqrt(meanOfDiffs);
-    }
-
-    public Optional<Double> getMinValue(ArrayList<Double> oyData){
-        return oyData.stream().min(Double::compareTo);
     }
 }
